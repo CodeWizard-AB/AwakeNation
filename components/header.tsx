@@ -1,3 +1,5 @@
+"use client";
+
 import Logo from "@/components/logo";
 import { navItems } from "@/content";
 import { Button } from "@/components/ui/button";
@@ -10,11 +12,29 @@ import {
 	SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 50);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
 	return (
-		<header className="border-b">
-			<nav className="flex justify-between items-center container py-4">
+		<header
+			className={cn(
+				"fixed top-0 left-0 right-0 z-50 transition-all duration-150",
+				isScrolled ? "bg-card/90 backdrop-blur-3xl border-b" : "bg-transparent"
+			)}
+		>
+			<nav className="flex justify-between items-center container py-6">
 				<Logo />
 				<ul className="lg:flex gap-6 lg:gap-8 hidden">
 					{navItems.map((link) => (
@@ -26,10 +46,14 @@ export default function Header() {
 						</li>
 					))}
 				</ul>
-				<Button className="lg:block hidden">Register Now</Button>
+				<Button className="lg:block hidden cursor-pointer">Register Now</Button>
 				<Sheet>
 					<SheetTrigger asChild className="lg:hidden block">
-						<Button variant="outline" size="icon">
+						<Button
+							variant="outline"
+							size="icon"
+							className="flex place-items-center"
+						>
 							<Menu />
 						</Button>
 					</SheetTrigger>
