@@ -93,14 +93,12 @@ const paymentSchema = z.object({
 		}, "Payment receipt is required for university tournament"),
 });
 
-const fullRegistrationSchema = basicInfoSchema
-	.merge(teamMembersSchema)
-	.merge(paymentSchema);
-
 type BasicInfoFormData = z.infer<typeof basicInfoSchema>;
 type TeamMembersFormData = z.infer<typeof teamMembersSchema>;
 type PaymentFormData = z.infer<typeof paymentSchema>;
-type FullRegistrationFormData = z.infer<typeof fullRegistrationSchema>;
+type FullRegistrationFormData = BasicInfoFormData &
+	TeamMembersFormData &
+	PaymentFormData;
 
 export default function Registration() {
 	const [currentStep, setCurrentStep] = useState(1);
@@ -232,7 +230,11 @@ export default function Registration() {
 
 	const addTeamMember = () => {
 		if (fields.length < 15) {
-			append({ fullName: "", jerseySize: undefined, position: undefined });
+			append({
+				fullName: "",
+				jerseySize: "M" as const,
+				position: "midfielder" as const,
+			});
 		}
 	};
 
@@ -277,89 +279,87 @@ export default function Registration() {
 	if (isSubmitted) {
 		return (
 			<section id="registration" className="container">
-				
-					<motion.div
-						initial={{ opacity: 0, scale: 0.9 }}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{ duration: 0.6 }}
-						className="max-w-2xl mx-auto"
-					>
-						<Card className="card-professional overflow-hidden border-green-500/20 pt-0">
-							<CardContent className="p-0">
-								<div className="bg-gradient-to-r from-green-600 to-green-700 p-8 text-center">
-									<motion.div
-										initial={{ scale: 0 }}
-										animate={{ scale: 1 }}
-										transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-										className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6"
-									>
-										<CheckCircle className="h-12 w-12 text-white" />
-									</motion.div>
-									<h3 className="text-4xl font-bold text-white mb-4">
-										Registration Complete!
-									</h3>
-									<p className="text-xl text-green-100">
-										Welcome to AwakeNation Sports Fest 2025
-									</p>
+				<motion.div
+					initial={{ opacity: 0, scale: 0.9 }}
+					animate={{ opacity: 1, scale: 1 }}
+					transition={{ duration: 0.6 }}
+					className="max-w-2xl mx-auto"
+				>
+					<Card className="card-professional overflow-hidden border-green-500/20 pt-0">
+						<CardContent className="p-0">
+							<div className="bg-gradient-to-r from-green-600 to-green-700 p-8 text-center">
+								<motion.div
+									initial={{ scale: 0 }}
+									animate={{ scale: 1 }}
+									transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+									className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6"
+								>
+									<CheckCircle className="h-12 w-12 text-white" />
+								</motion.div>
+								<h3 className="text-4xl font-bold text-white mb-4">
+									Registration Complete!
+								</h3>
+								<p className="text-xl text-green-100">
+									Welcome to AwakeNation Sports Fest 2025
+								</p>
+							</div>
+							<div className="p-8 text-center">
+								<p className="text-muted-foreground mb-8 text-lg leading-relaxed">
+									Thank you for registering! We&apos;ll review your submission
+									and send confirmation details to your email within 24 hours.
+								</p>
+								<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+									{[
+										{
+											icon: Mail,
+											label: "Check Email",
+											color: "text-blue-500",
+										},
+										{
+											icon: Smartphone,
+											label: "SMS Updates",
+											color: "text-green-500",
+										},
+										{
+											icon: Trophy,
+											label: "Event Ready",
+											color: "text-yellow-500",
+										},
+									].map((item, index) => (
+										<motion.div
+											key={index}
+											initial={{ opacity: 0, y: 20 }}
+											animate={{ opacity: 1, y: 0 }}
+											transition={{ delay: 0.5 + index * 0.1 }}
+											className="bg-card rounded-xl p-4 border"
+										>
+											<item.icon
+												className={`h-8 w-8 mx-auto mb-2 ${item.color}`}
+											/>
+											<p className="text-sm text-muted-foreground">
+												{item.label}
+											</p>
+										</motion.div>
+									))}
 								</div>
-								<div className="p-8 text-center">
-									<p className="text-muted-foreground mb-8 text-lg leading-relaxed">
-										Thank you for registering! We&apos;ll review your submission
-										and send confirmation details to your email within 24 hours.
-									</p>
-									<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-										{[
-											{
-												icon: Mail,
-												label: "Check Email",
-												color: "text-blue-500",
-											},
-											{
-												icon: Smartphone,
-												label: "SMS Updates",
-												color: "text-green-500",
-											},
-											{
-												icon: Trophy,
-												label: "Event Ready",
-												color: "text-yellow-500",
-											},
-										].map((item, index) => (
-											<motion.div
-												key={index}
-												initial={{ opacity: 0, y: 20 }}
-												animate={{ opacity: 1, y: 0 }}
-												transition={{ delay: 0.5 + index * 0.1 }}
-												className="bg-card rounded-xl p-4 border"
-											>
-												<item.icon
-													className={`h-8 w-8 mx-auto mb-2 ${item.color}`}
-												/>
-												<p className="text-sm text-muted-foreground">
-													{item.label}
-												</p>
-											</motion.div>
-										))}
-									</div>
-									<Button
-										onClick={() => {
-											setIsSubmitted(false);
-											setCurrentStep(1);
-											setFormData({});
-											basicInfoForm.reset();
-											teamMembersForm.reset();
-											paymentForm.reset();
-										}}
-										variant="outline"
-										className="hover-lift"
-									>
-										Register Another Team
-									</Button>
-								</div>
-							</CardContent>
-						</Card>
-					</motion.div>
-				
+								<Button
+									onClick={() => {
+										setIsSubmitted(false);
+										setCurrentStep(1);
+										setFormData({});
+										basicInfoForm.reset();
+										teamMembersForm.reset();
+										paymentForm.reset();
+									}}
+									variant="outline"
+									className="hover-lift"
+								>
+									Register Another Team
+								</Button>
+							</div>
+						</CardContent>
+					</Card>
+				</motion.div>
 			</section>
 		);
 	}

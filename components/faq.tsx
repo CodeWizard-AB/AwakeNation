@@ -48,7 +48,7 @@ const faq = [
 
 export default function Faq() {
 	return (
-		<section className="flex items-center justify-center px-6">
+		<section className="flex items-center justify-center">
 			<div className="container">
 				<h2 className="text-4xl md:text-5xl !leading-[1.15] font-bold tracking-tighter text-center">
 					Frequently Asked Questions

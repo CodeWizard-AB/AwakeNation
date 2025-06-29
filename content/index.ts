@@ -7,6 +7,51 @@ export const navItems = [
 	{ name: "Contact", href: "#contact" },
 ];
 
+export const tournaments = [
+	{
+		id: "university",
+		title: "University Tournament",
+		subtitle: "Premium Competition",
+		teams: 32,
+		champion: "100,000 BDT",
+		runnerUp: "50,000 BDT",
+		registration: "6,000 BDT",
+		format: "Group Stage Format",
+		gradient: "from-blue-600 via-blue-700 to-indigo-700",
+		bgGradient: "from-blue-500/10 via-blue-600/10 to-indigo-600/10",
+		borderColor: "border-blue-500/30",
+		textColor: "text-blue-500",
+		isPremium: true,
+		highlights: [
+			"32 Elite Teams",
+			"Professional Referees",
+			"Live Streaming",
+			"Media Coverage",
+		],
+	},
+	{
+		id: "college",
+		title: "College Tournament",
+		subtitle:"Rising Stars Competition",
+		teams: 16,
+		champion: "20,000 BDT",
+		runnerUp: "10,000 BDT",
+		registration: "3,000 BDT",
+		format: "Knockout Format",
+		gradient: "from-emerald-600 via-green-700 to-teal-700",
+		bgGradient: "from-emerald-500/10 via-green-600/10 to-teal-600/10",
+		borderColor: "border-emerald-500/30",
+		textColor: "text-emerald-500",
+		isPremium: false,
+		highlights: [
+			"16 Rising Teams",
+			"Youth Development",
+			"Skill Building",
+			"Community Spirit",
+		],
+	},
+];
+
 export const teamMembers = [
 	{
 		name: "John Doe",
