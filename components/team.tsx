@@ -6,24 +6,24 @@ import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Team() {
 	return (
-		<section className="flex flex-col justify-center container mx-auto">
+		<section id="team" className="flex flex-col justify-center container py-16">
 			<div className="text-center max-w-2xl mx-auto mb-16">
 				<h2 className="mt-3 text-4xl sm:text-5xl font-bold tracking-tight">
 					Meet Our Team
 				</h2>
 				<p className="mt-6 text-base sm:text-lg">
 					Our philosophy is simple — hire a team of diverse, passionate people
-					and foster a culture that empowers you to do you best work.
+					and foster a culture that empowers you to do your best work.
 				</p>
 			</div>
 
-			<div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
+			<div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
 				{teamMembers.map((member) => (
 					<div key={member.name}>
 						<Image
 							src={member.imageUrl}
 							alt={member.name}
-							className="w-full aspect-square rounded-lg object-cover bg-secondary"
+							className="w-full object-top aspect-square rounded-lg object-cover bg-secondary"
 							width={600}
 							height={600}
 						/>

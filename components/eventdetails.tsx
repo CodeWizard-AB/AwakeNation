@@ -53,7 +53,7 @@ const features = [
 		icon: Music,
 		title: "Live Concert",
 		description:
-			"Top bands and artists performing live throughout the event with state-of-the-art sound systems",
+			"Enjoy live music from top bands and artists performing throughout the event for everyone.",
 		badge: "Free Entry",
 		gradient: "from-purple-600 via-violet-700 to-purple-800",
 		iconColor: "text-purple-400",
@@ -63,7 +63,7 @@ const features = [
 		icon: Gamepad2,
 		title: "Gaming Zone",
 		description:
-			"Interactive gaming stations with FIFA tournaments, mobile gaming, and retro arcade games",
+			"Play FIFA, mobile, and arcade games in our interactive gaming zone for all ages.",
 		badge: "Interactive Games",
 		gradient: "from-cyan-600 via-blue-700 to-indigo-800",
 		iconColor: "text-cyan-400",
@@ -73,7 +73,7 @@ const features = [
 		icon: Gift,
 		title: "Prize Giveaways",
 		description:
-			"Hourly prize distributions, lucky draws, and surprise giveaways for all attendees",
+			"Win hourly prize draws and surprise gifts, including tech gadgets and vouchers for attendees.",
 		badge: "Surprise Gifts",
 		gradient: "from-yellow-600 via-amber-700 to-orange-800",
 		iconColor: "text-yellow-400",
@@ -83,7 +83,7 @@ const features = [
 		icon: Target,
 		title: "Skills Challenge",
 		description:
-			"Individual football skill competitions including penalty shootouts and freestyle contests",
+			"Show your football skills in penalty shootouts and freestyle contests to win awards.",
 		badge: "Special Awards",
 		gradient: "from-red-600 via-rose-700 to-pink-800",
 		iconColor: "text-red-400",
@@ -154,17 +154,7 @@ export default function EventDetails() {
 						transition={{ delay: index * 0.2, duration: 0.6 }}
 						className="group"
 					>
-						<Card className="overflow-hidden border-0 shadow-2xl hover:shadow-3xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl pt-0">
-							{/* Premium Badge */}
-							{tournament.isPremium && (
-								<div className="absolute top-6 right-6 z-20">
-									<Badge className="bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-bold px-4 py-2 shadow-lg">
-										<Crown className="h-4 w-4 mr-1" />
-										Premium
-									</Badge>
-								</div>
-							)}
-
+						<Card className="overflow-hidden border shadow-2xl hover:shadow-3xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl pt-0">
 							{/* Header with Gradient */}
 							<CardHeader
 								className={`bg-gradient-to-r ${tournament.gradient} text-white relative overflow-hidden p-8`}
@@ -298,7 +288,7 @@ export default function EventDetails() {
 				{eventInfo.map((info, index) => (
 					<Card
 						key={index}
-						className="text-center border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl overflow-hidden group"
+						className="text-center shadow-xl hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl overflow-hidden group border"
 					>
 						<CardContent className="p-8 relative">
 							<div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-muted/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -325,7 +315,6 @@ export default function EventDetails() {
 			</div>
 
 			{/* Event Features */}
-
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
 				{features.map((feature, index) => (
 					<motion.div
@@ -354,18 +343,6 @@ export default function EventDetails() {
 									{feature.description}
 								</p>
 
-								<div className="space-y-3 mb-6">
-									{feature.highlights.map((highlight, idx) => (
-										<div
-											key={idx}
-											className="flex items-center justify-center space-x-2"
-										>
-											<div className="w-1.5 h-1.5 bg-white/60 rounded-full" />
-											<span className="text-xs text-white/80">{highlight}</span>
-										</div>
-									))}
-								</div>
-
 								<Badge className="bg-white/20 text-white border-0 px-6 py-2 hover:bg-white/30 transition-colors shadow-lg">
 									{feature.badge}
 								</Badge>
@@ -376,12 +353,8 @@ export default function EventDetails() {
 			</div>
 
 			{/* Event Summary Stats */}
-			<motion.div
-				initial={{ opacity: 0, y: 30 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ delay: 1.2, duration: 0.6 }}
-			>
-				<Card className="border-0 shadow-2xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl overflow-hidden">
+			<div>
+				<Card className="border shadow-2xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl overflow-hidden">
 					<CardContent className="p-12">
 						<div className="text-center mb-12">
 							<h3 className="text-4xl font-bold text-foreground mb-4">
@@ -421,7 +394,7 @@ export default function EventDetails() {
 						</div>
 					</CardContent>
 				</Card>
-			</motion.div>
+			</div>
 		</section>
 	);
 }
