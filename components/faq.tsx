@@ -1,50 +1,4 @@
-import {
-	BadgeDollarSign,
-	Route,
-	ShieldCheck,
-	Truck,
-	Undo2,
-	UserRoundCheck,
-} from "lucide-react";
-
-const faq = [
-	{
-		icon: Undo2,
-		question: "What is your return policy?",
-		answer:
-			"You can return unused items in their original packaging within 30 days for a refund or exchange. Contact support for assistance.",
-	},
-	{
-		icon: Route,
-		question: "How do I track my order?",
-		answer:
-			"Track your order using the link provided in your confirmation email, or log into your account to view tracking details.",
-	},
-	{
-		icon: Truck,
-		question: "Do you ship internationally?",
-		answer:
-			"Yes, we ship worldwide. Shipping fees and delivery times vary by location, and customs duties may apply for some countries.",
-	},
-	{
-		icon: BadgeDollarSign,
-		question: "What payment methods do you accept?",
-		answer:
-			"We accept Visa, MasterCard, American Express, PayPal, Apple Pay, and Google Pay, ensuring secure payment options for all customers.",
-	},
-	{
-		icon: ShieldCheck,
-		question: "What if I receive a damaged item?",
-		answer:
-			"Please contact our support team within 48 hours of delivery with photos of the damaged item. We’ll arrange a replacement or refund.",
-	},
-	{
-		icon: UserRoundCheck,
-		question: "How can I contact customer support?",
-		answer:
-			"Reach out via email at support@example.com or call us at 1-800-123-4567 for assistance with any inquiries.",
-	},
-];
+import { faq } from "@/content";
 
 export default function Faq() {
 	return (
@@ -54,7 +8,7 @@ export default function Faq() {
 					Frequently Asked Questions
 				</h2>
 				<p className="mt-3 text-lg text-center text-muted-foreground">
-					Quick answers to common questions about our upcoming event 
+					Quick answers to common questions about our upcoming event
 				</p>
 
 				<div className="mt-12 grid md:grid-cols-2 rounded-xl overflow-hidden outline outline-background outline-offset-[-1px]">

@@ -6,7 +6,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 import StatsCarousel from "@/components/statscarousel";
 import Link from "next/link";
 
-export default function HeroSection() {
+export default function Hero() {
 	return (
 		<section
 			id="home"

@@ -11,7 +11,7 @@ export default async function Team() {
 	);
 
 	return (
-		<section id="team" className="flex flex-col justify-center container py-16">
+		<section id="team" className="flex flex-col justify-center container">
 			<div className="text-center max-w-2xl mx-auto mb-16">
 				<h2 className="mt-3 text-4xl sm:text-5xl font-bold tracking-tight">
 					Meet Our Team

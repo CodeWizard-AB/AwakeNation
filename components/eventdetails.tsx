@@ -27,9 +27,12 @@ export default function EventDetails() {
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
 					{/* Teams */}
 					<div className="text-center p-8 rounded-3xl bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/20 shadow-xl">
-						<div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
+						<motion.div
+							whileHover={{ scale: 1.1, rotate: 5 }}
+							className="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl"
+						>
 							<Users className="h-10 w-10 text-white" />
-						</div>
+						</motion.div>
 						<p className="text-sm text-gray-400 mb-3 font-medium uppercase tracking-wider">
 							Total Teams
 						</p>
@@ -41,9 +44,12 @@ export default function EventDetails() {
 
 					{/* Registration Fee */}
 					<div className="text-center p-8 rounded-3xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 shadow-xl">
-						<div className="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
+						<motion.div
+							whileHover={{ scale: 1.1, rotate: 5 }}
+							className="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl"
+						>
 							<DollarSign className="h-10 w-10 text-white" />
-						</div>
+						</motion.div>
 						<p className="text-sm text-gray-400 mb-3 font-medium uppercase tracking-wider">
 							Registration Fee
 						</p>
@@ -53,9 +59,12 @@ export default function EventDetails() {
 
 					{/* Prize Pool */}
 					<div className="text-center p-8 rounded-3xl bg-gradient-to-br from-yellow-500/10 to-amber-500/10 border border-yellow-500/20 shadow-xl">
-						<div className="w-20 h-20 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
+						<motion.div
+							whileHover={{ scale: 1.1, rotate: 5 }}
+							className="w-20 h-20 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl"
+						>
 							<Trophy className="h-10 w-10 text-white" />
-						</div>
+						</motion.div>
 						<p className="text-sm text-gray-400 mb-3 font-medium uppercase tracking-wider">
 							Total Prize Pool
 						</p>
@@ -85,7 +94,7 @@ export default function EventDetails() {
 								</div>
 							</div>
 							<span className="hidden md:block text-gray-300 font-bold text-3xl">
-								50,000 BDT
+								1,50,000 BDT
 							</span>
 						</div>
 					</Card>
@@ -128,9 +137,9 @@ export default function EventDetails() {
 
 							<motion.div
 								whileHover={{ scale: 1.1, rotate: 5 }}
-								className={`w-24 h-24 bg-gradient-to-r ${info.gradient} rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl relative z-10`}
+								className={`w-20 h-20 bg-gradient-to-r ${info.gradient} rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl relative z-10`}
 							>
-								<info.icon className="h-12 w-12 text-white" />
+								<info.icon className="h-10 w-10 text-white" />
 							</motion.div>
 
 							<h4 className="text-2xl font-bold text-foreground mb-4 relative z-10">
@@ -157,9 +166,9 @@ export default function EventDetails() {
 
 								<motion.div
 									whileHover={{ scale: 1.1, rotate: 5 }}
-									className={`w-24 h-24 bg-gradient-to-r ${phase.gradient} rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl relative z-10`}
+									className={`w-20 h-20 bg-gradient-to-r ${phase.gradient} rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl relative z-10`}
 								>
-									<phase.icon className="h-12 w-12 text-white" />
+									<phase.icon className="h-10 w-10 text-white" />
 								</motion.div>
 
 								<h4 className="text-xl font-bold text-white mb-4">
