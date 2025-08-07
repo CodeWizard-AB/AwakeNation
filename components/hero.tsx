@@ -4,6 +4,7 @@ import Counter from "@/components/counter";
 import { Cover } from "@/components/ui/cover";
 import { Spotlight } from "@/components/ui/spotlight";
 import StatsCarousel from "@/components/statscarousel";
+import Link from "next/link";
 
 export default function HeroSection() {
 	return (
@@ -56,16 +57,20 @@ export default function HeroSection() {
 
 				{/* CTA Buttons */}
 				<div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-					<Button size={"lg"} className="text-xl cursor-pointer py-6">
-						Register Now <ArrowRight />
-					</Button>
-					<Button
-						variant={"outline"}
-						size={"lg"}
-						className="text-xl cursor-pointer py-6"
-					>
-						Explore Event
-					</Button>
+					<Link href="#registration">
+						<Button size={"lg"} className="text-xl cursor-pointer py-6">
+							Register Now <ArrowRight />
+						</Button>
+					</Link>
+					<Link href="#event-details">
+						<Button
+							variant={"outline"}
+							size={"lg"}
+							className="text-xl cursor-pointer py-6"
+						>
+							Explore Event
+						</Button>
+					</Link>
 				</div>
 			</div>
 		</section>

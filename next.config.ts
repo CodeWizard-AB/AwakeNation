@@ -11,8 +11,8 @@ const nextConfig: NextConfig = {
 			},
 			{
 				protocol: "https",
-				hostname: "ik.imagekit.io",
-				pathname: "/**",
+				hostname: "cdn.sanity.io",
+				pathname: "/images/**",
 			},
 		],
 	},
