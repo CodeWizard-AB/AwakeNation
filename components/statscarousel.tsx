@@ -5,19 +5,19 @@ const stats = [
 	{
 		icon: Users,
 		label: "Teams",
-		value: "48",
+		value: "32",
 		color: "text-blue-400",
 	},
 	{
 		icon: Trophy,
 		label: "Prize Pool",
-		value: "170K",
+		value: "200K",
 		color: "text-yellow-400",
 	},
 	{
 		icon: Calendar,
 		label: "Event Date",
-		value: "Aug 9",
+		value: "Sep 20",
 		color: "text-green-400",
 	},
 	{

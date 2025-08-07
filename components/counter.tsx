@@ -11,7 +11,7 @@ export default function Counter() {
 	});
 
 	useEffect(() => {
-		const targetDate = new Date("2025-08-09T09:00:00").getTime();
+		const targetDate = new Date("2025-09-01T09:00:00").getTime();
 
 		const updateCountdown = () => {
 			const now = new Date().getTime();

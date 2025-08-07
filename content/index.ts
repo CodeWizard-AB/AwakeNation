@@ -1,3 +1,5 @@
+import { Award, Calendar, Crown, MapPin, Trophy, Users } from "lucide-react";
+
 export const navItems = [
 	{ name: "Home", href: "#home" },
 	{ name: "About", href: "#about" },
@@ -7,48 +9,68 @@ export const navItems = [
 	{ name: "Contact", href: "#contact" },
 ];
 
-export const tournaments = [
+export const eventInfo = [
 	{
-		id: "university",
-		title: "University Tournament",
-		subtitle: "Premium Competition",
-		teams: 32,
-		champion: "100,000 BDT",
-		runnerUp: "50,000 BDT",
-		registration: "6,000 BDT",
-		format: "Group Stage Format",
-		gradient: "from-blue-600 via-blue-700 to-indigo-700",
-		bgGradient: "from-blue-500/10 via-blue-600/10 to-indigo-600/10",
-		borderColor: "border-blue-500/30",
-		textColor: "text-blue-500",
-		isPremium: true,
-		highlights: [
-			"32 Elite Teams",
-			"Professional Referees",
-			"Live Streaming",
-			"Media Coverage",
-		],
+		icon: Calendar,
+		title: "Event Date",
+		primary: "20th September, 2025",
+		secondary: "8:00 AM - 6:00 PM",
+		color: "text-emerald-500",
+		bgColor: "bg-emerald-500/10",
+		gradient: "from-emerald-500 to-teal-500",
 	},
 	{
-		id: "college",
-		title: "College Tournament",
-		subtitle: "Rising Stars Competition",
-		teams: 16,
-		champion: "20,000 BDT",
-		runnerUp: "10,000 BDT",
-		registration: "3,000 BDT",
-		format: "Knockout Format",
-		gradient: "from-emerald-600 via-green-700 to-teal-700",
-		bgGradient: "from-emerald-500/10 via-green-600/10 to-teal-600/10",
-		borderColor: "border-emerald-500/30",
-		textColor: "text-emerald-500",
-		isPremium: false,
-		highlights: [
-			"16 Rising Teams",
-			"Youth Development",
-			"Skill Building",
-			"Community Spirit",
-		],
+		icon: MapPin,
+		title: "Venue",
+		primary: "Daffodil International University",
+		secondary: "Ashulia Campus, Dhaka",
+		color: "text-purple-500",
+		bgColor: "bg-purple-500/10",
+		gradient: "from-purple-500 to-violet-500",
+	},
+	{
+		icon: Users,
+		title: "Match Format",
+		primary: "6-A-Side Football",
+		secondary: "Professional Referees",
+		color: "text-orange-500",
+		bgColor: "bg-orange-500/10",
+		gradient: "from-orange-500 to-red-500",
+	},
+];
+
+export const tournamentStructure = [
+	{
+		phase: "Group Stage",
+		description: "32 teams divided into 8 groups",
+		duration: "8:00 AM - 12:00 PM",
+		matches: "48 matches",
+		icon: Users,
+		gradient: "from-cyan-500 to-sky-500",
+	},
+	{
+		phase: "Round of 16",
+		description: "Top 2 teams from each group advance",
+		duration: "1:00 PM - 2:00 PM",
+		matches: "8 matches",
+		icon: Trophy,
+		gradient: "from-yellow-500 to-amber-500",
+	},
+	{
+		phase: "Quarter Finals",
+		description: "Best 8 teams compete for semi-final spots",
+		duration: "2:30 PM - 3:00 PM",
+		matches: "4 matches",
+		icon: Award,
+		gradient: "from-pink-500 to-rose-500",
+	},
+	{
+		phase: "Semi Finals & Final",
+		description: "Last matches and prize ceremony",
+		duration: "3:00 PM - 5:00 PM",
+		matches: "3 matches",
+		icon: Crown,
+		gradient: "from-indigo-500 to-blue-500",
 	},
 ];
 
@@ -57,37 +79,42 @@ export const teamMembers = [
 		name: "Shafin Zahid",
 		title: "Chief Executive Officer",
 		bio: "Visionary leader overseeing growth, strategy, and partnerships ",
-		imageUrl: "https://ik.imagekit.io/xp2qigjdg/shafin.jpg?updatedAt=1751549076793",
+		imageUrl:
+			"https://ik.imagekit.io/xp2qigjdg/shafin.jpg?updatedAt=1751549076793",
 	},
 	{
 		name: "Anuany Argha",
 		title: "Director of Information Technology",
 		bio: "Heads technical innovation, front-end architecture, and IT infrastructure.",
-		imageUrl: "https://ik.imagekit.io/xp2qigjdg/argha.jpg?updatedAt=1751550090358",
+		imageUrl:
+			"https://ik.imagekit.io/xp2qigjdg/argha.jpg?updatedAt=1751550090358",
 	},
 	{
 		name: "Tazwar Kamal Dihan",
 		title: "Director of Brand and Strategy",
 		bio: "Leads brand identity, strategic direction, and market positioning.",
-		imageUrl: "https://ik.imagekit.io/xp2qigjdg/dihan.jpg?updatedAt=1751549076720",
+		imageUrl:
+			"https://ik.imagekit.io/xp2qigjdg/dihan.jpg?updatedAt=1751549076720",
 	},
 	{
 		name: "Ab John",
 		title: "Director of Sports",
 		bio: "Manages all sports initiatives, partnerships, and community engagement.",
-		imageUrl: "https://ik.imagekit.io/xp2qigjdg/john.jpg?updatedAt=1751549076875",
+		imageUrl:
+			"https://ik.imagekit.io/xp2qigjdg/john.jpg?updatedAt=1751549076875",
 	},
 	{
 		name: "Shaiyan Zahid",
 		title: "Director of Operations",
 		bio: "Oversees internal processes, logistics, and day-to-day operations.",
-		imageUrl: "https://ik.imagekit.io/xp2qigjdg/shaiyan.jpg?updatedAt=1751549076817",
+		imageUrl:
+			"https://ik.imagekit.io/xp2qigjdg/shaiyan.jpg?updatedAt=1751549076817",
 	},
 	{
 		name: "Zarif Olind",
 		title: "Director of Marketing",
 		bio: "Drives marketing campaigns, brand visibility, and user growth.",
-		imageUrl: "https://ik.imagekit.io/xp2qigjdg/zarif.jpg?updatedAt=1751549076904",
+		imageUrl:
+			"https://ik.imagekit.io/xp2qigjdg/zarif.jpg?updatedAt=1751549076904",
 	},
 ];
-

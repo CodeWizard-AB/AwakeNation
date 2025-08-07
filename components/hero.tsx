@@ -37,25 +37,15 @@ export default function HeroSection() {
 					</h1>
 
 					<div className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-light text-white/80 tracking-wide">
-						<Cover>Sports Fest 2025</Cover>
+						<Cover>Futsal Sports Fest 2025</Cover>
 					</div>
 				</div>
 
 				{/* Description */}
-				<p className="text-xl sm:text-2xl md:text-3xl mb-12 max-w-5xl mx-auto text-white/90 leading-relaxed font-light tracking-wide">
-					The biggest youth sports & culture celebration bringing together
-					<span className="text-primary font-semibold">
-						{" "}
-						32 university teams
-					</span>
-					,<span className="text-primary font-semibold"> 16 college teams</span>
-					,
-					<span className="text-primary font-semibold">
-						{" "}
-						live music concert
-					</span>
-					, and <span className="text-primary font-semibold"> fun games</span> —
-					building unity like never before.
+				<p className="text-xl sm:text-2xl md:text-3xl mb-12 max-w-5xl mx-auto text-white/90 leading-relaxed font-light">
+					The premier university football championship bringing together
+					<span className="text-red-400 font-semibold"> 32 elite teams</span>,
+					exciting competitions, and unity like never before.
 				</p>
 
 				{/* Stats Grid */}
