@@ -23,7 +23,7 @@ export default function Hero() {
 				<div className="inline-flex items-center px-6 py-3 rounded-xl backdrop-blur-sm border border-primary/50 mb-8 shadow-2xl">
 					<div className="w-2 h-2 bg-primary rounded-full mr-3 animate-pulse shadow-lg shadow-red-500/50" />
 					<span className="text-sm font-medium text-white/90">
-						Awaken the Nation, Unite the Spirit
+						Registration is now open
 					</span>
 				</div>
 

@@ -1,15 +1,9 @@
-import ImageKit from "imagekit";
 import { Marquee } from "./ui/marquee";
 import Image from "next/image";
 import { Badge } from "./ui/badge";
 import { aboutValues } from "@/content";
 import { Card, CardContent } from "./ui/card";
-
-const imagekit = new ImageKit({
-	publicKey: process.env.IMAGEKIT_PUBLIC_KEY!,
-	privateKey: process.env.IMAGEKIT_PRIVATE_KEY!,
-	urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT!,
-});
+import { imagekit } from "@/lib/imagekit";
 
 export default async function About() {
 	const files = await imagekit.listFiles({ path: "AwakeNation-Photos" });

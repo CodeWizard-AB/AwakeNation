@@ -3,7 +3,7 @@ import { z } from "zod";
 // ? Zod schema for a single player
 export const playerSchema = z.object({
 	name: z.string().min(1, "Player name is required."),
-	jerseySize: z.enum(["S", "M", "L", "XL", "XXL"], {
+	jerseySize: z.enum(["M", "L", "XL", "XXL"], {
 		required_error: "Player jersey size is required.",
 	}),
 	position: z.enum(["Goalkeeper", "Defender", "Midfielder", "Striker"], {

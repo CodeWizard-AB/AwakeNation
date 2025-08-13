@@ -140,6 +140,9 @@
 	button {
 		@apply cursor-pointer;
 	}
+	.hide-scrollbar {
+		scrollbar-width: none;
+	}
 }
 
 @layer utilities {

@@ -49,6 +49,7 @@ import {
 	registrationSchema,
 } from "@/lib/zod";
 import { steps, workflowSteps } from "@/content";
+import { createRegistration } from "@/actions/sanity";
 
 const JERSEY_SIZES = playerSchema.shape.jerseySize.options;
 const PLAYER_POSITIONS = playerSchema.shape.position.options;
@@ -90,11 +91,6 @@ export default function Registration() {
 		name: "players",
 	});
 
-	const onSubmit = (data: RegistrationFormData) => {
-		console.log("Form Data:", data);
-		alert("Form submitted successfully! Check the console for the data.");
-	};
-
 	const handleNext = async () => {
 		let isValid = false;
 
@@ -113,7 +109,7 @@ export default function Registration() {
 				isValid = await trigger("players");
 				break;
 			case 3:
-				isValid = await trigger("paymentReceipt");
+				isValid = await trigger(["paymentReceipt", "universityLogo"]);
 				break;
 			default:
 				isValid = true;
@@ -316,7 +312,7 @@ export default function Registration() {
 									<AnimatePresence mode="wait">
 										<Form {...form}>
 											<form
-												onSubmit={handleSubmit(onSubmit)}
+												onSubmit={handleSubmit(createRegistration)}
 												className="space-y-6"
 											>
 												<motion.div
@@ -477,7 +473,7 @@ export default function Registration() {
 																</Badge>
 															</div>
 
-															<div className="space-y-4 max-h-96 overflow-y-auto">
+															<div className="space-y-4 max-h-96 overflow-y-auto hide-scrollbar">
 																{fields.map((field, index) => (
 																	<motion.div
 																		key={field.id}
@@ -617,9 +613,9 @@ export default function Registration() {
 																	onClick={() =>
 																		append({
 																			name: "",
-																			jerseySize: "M",
-																			position: "Striker",
-																		})
+																			jerseySize: undefined,
+																			position: undefined,
+																		} as never)
 																	}
 																	className="w-full mt-6 border-2 border-dashed border-border text-foreground hover:bg-accent hover:border-purple-500 h-12"
 																>
@@ -694,109 +690,117 @@ export default function Registration() {
 																</CardContent>
 															</Card>
 
-															<FormField
-																control={control}
-																name="paymentReceipt"
-																render={({
-																	field: { onChange, value, ...field },
-																}) => (
-																	<FormItem>
-																		<FormLabel className="text-foreground flex items-center">
-																			<Camera className="h-4 w-4 mr-2 text-green-500" />
-																			Upload Payment Receipt
-																		</FormLabel>
-																		<FormControl>
-																			<div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-green-500 transition-all duration-300">
-																				<Input
-																					type="file"
-																					accept="image/*"
-																					onChange={(e) => {
-																						const file = e.target.files?.[0];
-																						onChange(file);
-																					}}
-																					className="hidden"
-																					{...field}
-																				/>
-																				<Button
-																					type="button"
-																					variant="outline"
-																					onClick={() => {
-																						const input =
-																							document.querySelector(
-																								'input[type="file"]'
-																							) as HTMLInputElement;
-																						input?.click();
-																					}}
-																					className="border-border text-foreground hover:bg-accent h-12 px-6"
-																				>
-																					<Upload className="h-5 w-5 mr-2" />
-																					{value
-																						? value.name
-																						: "Choose Payment Receipt"}
-																				</Button>
-																				{value && (
-																					<p className="text-green-500 mt-3">
-																						✓ Receipt uploaded successfully
-																					</p>
-																				)}
-																			</div>
-																		</FormControl>
-																		<FormMessage />
-																	</FormItem>
-																)}
-															/>
+															<div className="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+																<FormField
+																	control={control}
+																	name="paymentReceipt"
+																	render={({
+																		field: { onChange, value, ...field },
+																	}) => (
+																		<FormItem>
+																			<FormLabel
+																				htmlFor="paymentReceipt"
+																				className="text-foreground flex items-center"
+																			>
+																				<Camera className="h-4 w-4 mr-2 text-green-500" />
+																				Upload Payment Receipt
+																			</FormLabel>
+																			<FormControl>
+																				<div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-green-500 transition-all duration-300">
+																					<Input
+																						id="paymentReceipt"
+																						type="file"
+																						accept="image/*"
+																						onChange={(e) => {
+																							onChange(e.target.files?.[0]);
+																						}}
+																						className="hidden"
+																						{...field}
+																					/>
+																					<Button
+																						type="button"
+																						variant="outline"
+																						onClick={() => {
+																							const input =
+																								document.getElementById(
+																									"paymentReceipt"
+																								) as HTMLInputElement;
+																							input?.click();
+																						}}
+																						className="border-border text-foreground hover:bg-accent h-12 px-6"
+																					>
+																						<Upload className="h-5 w-5 mr-2" />
+																						{value
+																							? value.name
+																							: "Choose Payment Receipt"}
+																					</Button>
+																					{value && (
+																						<p className="text-green-500 mt-3">
+																							✓ Receipt uploaded successfully
+																						</p>
+																					)}
+																				</div>
+																			</FormControl>
+																			<FormMessage />
+																		</FormItem>
+																	)}
+																/>
 
-															<FormField
-																control={control}
-																name="universityLogo"
-																render={({
-																	field: { onChange, value, ...field },
-																}) => (
-																	<FormItem>
-																		<FormLabel className="text-foreground flex items-center">
-																			<Camera className="h-4 w-4 mr-2 text-green-500" />
-																			Upload University Logo
-																		</FormLabel>
-																		<FormControl>
-																			<div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-green-500 transition-all duration-300">
-																				<Input
-																					type="file"
-																					accept="image/*"
-																					onChange={(e) => {
-																						const file = e.target.files?.[0];
-																						onChange(file);
-																					}}
-																					className="hidden"
-																					{...field}
-																				/>
-																				<Button
-																					type="button"
-																					variant="outline"
-																					onClick={() => {
-																						const input =
-																							document.querySelector(
-																								'input[type="file"]'
-																							) as HTMLInputElement;
-																						input?.click();
-																					}}
-																					className="border-border text-foreground hover:bg-accent h-12 px-6"
-																				>
-																					<Upload className="h-5 w-5 mr-2" />
-																					{value
-																						? value.name
-																						: "Choose University Logo"}
-																				</Button>
-																				{value && (
-																					<p className="text-green-500 mt-3">
-																						✓ Logo uploaded successfully
-																					</p>
-																				)}
-																			</div>
-																		</FormControl>
-																		<FormMessage />
-																	</FormItem>
-																)}
-															/>
+																<FormField
+																	control={control}
+																	name="universityLogo"
+																	render={({
+																		field: { onChange, value, ...field },
+																	}) => (
+																		<FormItem>
+																			<FormLabel
+																				htmlFor="universityLogo"
+																				className="text-foreground flex items-center"
+																			>
+																				<Camera className="h-4 w-4 mr-2 text-green-500" />
+																				Upload University Logo
+																			</FormLabel>
+																			<FormControl>
+																				<div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:border-green-500 transition-all duration-300">
+																					<Input
+																						id="universityLogo"
+																						type="file"
+																						accept="image/*"
+																						onChange={(e) => {
+																							onChange(e.target.files?.[0]);
+																						}}
+																						className="hidden"
+																						{...field}
+																					/>
+																					<Button
+																						type="button"
+																						variant="outline"
+																						onClick={() => {
+																							const input =
+																								document.getElementById(
+																									"universityLogo"
+																								) as HTMLInputElement;
+																							input?.click();
+																						}}
+																						className="border-border text-foreground hover:bg-accent h-12 px-6"
+																					>
+																						<Upload className="h-5 w-5 mr-2" />
+																						{value
+																							? value.name
+																							: "Choose University Logo"}
+																					</Button>
+																					{value && (
+																						<p className="text-green-500 mt-3">
+																							✓ Logo uploaded successfully
+																						</p>
+																					)}
+																				</div>
+																			</FormControl>
+																			<FormMessage />
+																		</FormItem>
+																	)}
+																/>
+															</div>
 														</div>
 													)}
 
@@ -826,7 +830,7 @@ export default function Registration() {
 																		</div>
 																		<div className="flex justify-between">
 																			<span className="text-muted-foreground">
-																				Institution:
+																				Institution Name:
 																			</span>
 																			<span className="text-foreground font-semibold">
 																				{getValues("institutionName")}
@@ -834,7 +838,7 @@ export default function Registration() {
 																		</div>
 																		<div className="flex justify-between">
 																			<span className="text-muted-foreground">
-																				Manager:
+																				Manager Name:
 																			</span>
 																			<span className="text-foreground font-semibold">
 																				{getValues("managerName")}
@@ -842,11 +846,27 @@ export default function Registration() {
 																		</div>
 																		<div className="flex justify-between">
 																			<span className="text-muted-foreground">
-																				Tournament:
+																				Manager Email:
 																			</span>
-																			<Badge className="bg-green-500/20 text-green-500">
-																				Futsal Tournament (6-A-Side)
-																			</Badge>
+																			<span className="text-foreground font-semibold">
+																				{getValues("managerEmail")}
+																			</span>
+																		</div>
+																		<div className="flex justify-between">
+																			<span className="text-muted-foreground">
+																				Manager Phone:
+																			</span>
+																			<span className="text-foreground font-semibold">
+																				{getValues("managerPhone")}
+																			</span>
+																		</div>
+																		<div className="flex justify-between">
+																			<span className="text-muted-foreground">
+																				Manager WhatsApp:
+																			</span>
+																			<span className="text-foreground font-semibold">
+																				{getValues("managerWhatsApp")}
+																			</span>
 																		</div>
 																	</CardContent>
 																</Card>
@@ -867,7 +887,7 @@ export default function Registration() {
 																				{getValues("players")?.length}
 																			</span>
 																		</div>
-																		<div className="space-y-2 max-h-32 overflow-y-auto">
+																		<div className="space-y-2">
 																			{getValues("players")?.map(
 																				(member, index) => (
 																					<div
@@ -880,6 +900,9 @@ export default function Registration() {
 																						</span>
 																						<span className="text-muted-foreground">
 																							{member.position}
+																						</span>
+																						<span className="text-muted-foreground">
+																							{member.jerseySize}
 																						</span>
 																					</div>
 																				)
@@ -948,7 +971,7 @@ export default function Registration() {
 							initial={{ opacity: 0, x: 20 }}
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ delay: 0.6, duration: 0.6 }}
-							className="sticky top-8"
+							className="sticky top-40"
 						>
 							<Card className="card-professional">
 								<CardHeader>
