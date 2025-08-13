@@ -13,6 +13,12 @@ import {
 	UserRoundCheck,
 	TrendingUp,
 	Zap,
+	Shield,
+	CreditCard,
+	Building,
+	FileText,
+	UserCheck,
+	FileCheck,
 } from "lucide-react";
 
 export const navItems = [
@@ -244,5 +250,87 @@ export const faq = [
 		question: "How can I contact customer support?",
 		answer:
 			"Reach out via email at support@example.com or call us at 1-800-123-4567 for assistance with any inquiries.",
+	},
+];
+
+export const steps = [
+	{
+		id: 1,
+		title: "Details",
+		icon: Building,
+		description: "Team & Institution Details",
+		color: "from-blue-600 to-blue-700",
+	},
+	{
+		id: 2,
+		title: "Players",
+		icon: Users,
+		description: "Add Your Players",
+		color: "from-purple-600 to-purple-700",
+	},
+	{
+		id: 3,
+		title: "Payment",
+		icon: CreditCard,
+		description: "Complete Registration",
+		color: "from-green-600 to-green-700",
+	},
+	{
+		id: 4,
+		title: "Review",
+		icon: Shield,
+		description: "Final Confirmation",
+		color: "from-orange-600 to-orange-700",
+	},
+];
+
+export const workflowSteps = [
+	{
+		id: 1,
+		title: "Form Submission",
+		description: "Complete registration form with team details",
+		icon: FileText,
+		color: "text-blue-500",
+		bgColor: "bg-blue-500/10",
+	},
+	{
+		id: 2,
+		title: "Payment Verification",
+		description: "Manual verification of payment receipt",
+		icon: CreditCard,
+		color: "text-green-500",
+		bgColor: "bg-green-500/10",
+	},
+	{
+		id: 3,
+		title: "Player Verification",
+		description: "Validate student IDs and eligibility",
+		icon: UserCheck,
+		color: "text-purple-500",
+		bgColor: "bg-purple-500/10",
+	},
+	{
+		id: 4,
+		title: "Document Review",
+		description: "Final review of all submitted documents",
+		icon: FileCheck,
+		color: "text-orange-500",
+		bgColor: "bg-orange-500/10",
+	},
+	{
+		id: 5,
+		title: "Final Approval",
+		description: "Official registration confirmation",
+		icon: Award,
+		color: "text-yellow-500",
+		bgColor: "bg-yellow-500/10",
+	},
+	{
+		id: 6,
+		title: "Event Ready",
+		description: "Team confirmed for tournament",
+		icon: Trophy,
+		color: "text-red-500",
+		bgColor: "bg-red-500/10",
 	},
 ];

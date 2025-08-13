@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { client } from "@/lib/sanity";
 import { Member } from "@/lib/types";
+import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default async function Team() {
 	const teamMembers = await client.fetch(
@@ -37,12 +37,12 @@ export default async function Team() {
 						<p className="mt-3">{member.bio}</p>
 						<div className="mt-4 flex items-center gap-2.5">
 							<Button
-								className="bg-accent hover:bg-accent text-muted-foreground shadow-none"
+								className="bg-muted hover:bg-muted text-muted-foreground shadow-none"
 								size="icon"
 								asChild
 							>
-								<Link href="#" target="_blank">
-									<FaLinkedin className="stroke-muted-foreground" />
+								<Link href={`tel:${member.phone}`}>
+									<Phone className="stroke-muted-foreground" />
 								</Link>
 							</Button>
 							<Button
@@ -50,17 +50,8 @@ export default async function Team() {
 								size="icon"
 								asChild
 							>
-								<Link href="#" target="_blank">
-									<FaFacebook className="stroke-muted-foreground" />
-								</Link>
-							</Button>
-							<Button
-								className="bg-muted hover:bg-muted text-muted-foreground shadow-none"
-								size="icon"
-								asChild
-							>
-								<Link href="#" target="_blank">
-									<FaInstagram className="stroke-muted-foreground" />
+								<Link href={`mailto:${member.email}`}>
+									<Mail className="stroke-muted-foreground" />
 								</Link>
 							</Button>
 						</div>

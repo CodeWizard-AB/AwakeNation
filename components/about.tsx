@@ -49,8 +49,8 @@ export default async function About() {
 						</figure>
 					))}
 				</Marquee>
-				<div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-				<div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+				<div className="pointer-events-none absolute inset-y-0 left-0 w-[5%] bg-gradient-to-r from-background"></div>
+				<div className="pointer-events-none absolute inset-y-0 right-0 w-[5%] bg-gradient-to-l from-background"></div>
 			</div>
 
 			<div className="mt-12">
