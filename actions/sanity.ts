@@ -8,6 +8,10 @@ export const createRegistration = async (data: RegistrationFormData) => {
 		`*[_type == "event" && slug.current == "awakenation-futsal-sports-fest-2025"][0]`
 	);
 
+	if (!event || !event._id) {
+		throw new Error("Event not found. Cannot create registration.");
+	}
+
 	const [logoAsset, receiptAsset] = await Promise.all([
 		client.assets.upload("file", data.universityLogo, {
 			filename: data.universityLogo.name,
@@ -22,10 +26,7 @@ export const createRegistration = async (data: RegistrationFormData) => {
 	const registration = await client.create({
 		_type: "registration",
 		event: { _ref: event._id, _type: "reference" },
-		submittedAt: new Date().toISOString(),
 		registrationData: {
-			participantName: data.managerName,
-			participantEmail: data.managerEmail,
 			teamName: data.teamName,
 			institutionName: data.institutionName,
 			managerName: data.managerName,

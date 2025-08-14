@@ -31,6 +31,7 @@ import {
 	Clock,
 	Zap,
 	AlertCircleIcon,
+	Loader2,
 } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useForm, useFieldArray } from "react-hook-form";
@@ -81,7 +82,7 @@ export default function Registration() {
 		handleSubmit,
 		control,
 		trigger,
-		formState: { isSubmitted, errors },
+		formState: { isSubmitSuccessful, isSubmitting, errors },
 		getValues,
 		reset,
 	} = form;
@@ -120,7 +121,7 @@ export default function Registration() {
 		}
 	};
 
-	if (isSubmitted) {
+	if (isSubmitSuccessful) {
 		return (
 			<section id="registration" className="container">
 				<motion.div
@@ -868,6 +869,24 @@ export default function Registration() {
 																				{getValues("managerWhatsApp")}
 																			</span>
 																		</div>
+																		<div className="flex justify-between">
+																			<span className="text-muted-foreground">
+																				University Logo:
+																			</span>
+																			<span className="text-foreground font-semibold">
+																				{getValues("universityLogo")?.name ||
+																					"Not Uploaded"}
+																			</span>
+																		</div>
+																		<div className="flex justify-between">
+																			<span className="text-muted-foreground">
+																				Payment Receipt:
+																			</span>
+																			<span className="text-foreground font-semibold">
+																				{getValues("paymentReceipt")?.name ||
+																					"Not Uploaded"}
+																			</span>
+																		</div>
 																	</CardContent>
 																</Card>
 
@@ -952,8 +971,12 @@ export default function Registration() {
 															type="submit"
 															className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-2"
 														>
-															Complete Registration
-															<CheckCircle className="h-4 w-4 ml-2" />
+															{isSubmitting
+																? (
+																		<Loader2 className="h-4 w-4 mr-2 animate-spin" />
+																  ) + "Submitting..."
+																: "Complete Registration" +
+																  <CheckCircle className="h-4 w-4 ml-2" />}
 														</Button>
 													)}
 												</div>
