@@ -1,8 +1,8 @@
-import { faq } from "@/content";
+import { faqs } from "@/content";
 
 export default function Faq() {
 	return (
-		<section className="flex items-center justify-center">
+		<section id="faq" className="flex items-center justify-center">
 			<div className="container">
 				<h2 className="text-4xl md:text-5xl !leading-[1.15] font-bold tracking-tighter text-center">
 					Frequently Asked Questions
@@ -12,7 +12,7 @@ export default function Faq() {
 				</p>
 
 				<div className="mt-12 grid md:grid-cols-2 rounded-xl overflow-hidden outline outline-background outline-offset-[-1px]">
-					{faq.map(({ question, answer, icon: Icon }) => (
+					{faqs.map(({ question, answer, icon: Icon }) => (
 						<div key={question} className="border p-6 -mt-px -ml-px">
 							<div className="h-10 w-10 flex items-center justify-center rounded-full bg-accent">
 								<Icon />

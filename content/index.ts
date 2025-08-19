@@ -19,6 +19,14 @@ import {
 	FileText,
 	UserCheck,
 	FileCheck,
+	Flag,
+	Gift,
+	Camera,
+	Gavel,
+	MessageCircle,
+	MailIcon,
+	MapPinIcon,
+	PhoneIcon,
 } from "lucide-react";
 
 export const navItems = [
@@ -27,6 +35,7 @@ export const navItems = [
 	{ name: "Event Details", href: "#event-details" },
 	{ name: "Registration", href: "#registration" },
 	{ name: "Team", href: "#team" },
+	{ name: "Faq", href: "#faq" },
 	{ name: "Contact", href: "#contact" },
 ];
 
@@ -214,45 +223,6 @@ export const teamMembers = [
 	},
 ];
 
-export const faq = [
-	{
-		icon: Undo2,
-		question: "What is your return policy?",
-		answer:
-			"You can return unused items in their original packaging within 30 days for a refund or exchange. Contact support for assistance.",
-	},
-	{
-		icon: Route,
-		question: "How do I track my order?",
-		answer:
-			"Track your order using the link provided in your confirmation email, or log into your account to view tracking details.",
-	},
-	{
-		icon: Truck,
-		question: "Do you ship internationally?",
-		answer:
-			"Yes, we ship worldwide. Shipping fees and delivery times vary by location, and customs duties may apply for some countries.",
-	},
-	{
-		icon: BadgeDollarSign,
-		question: "What payment methods do you accept?",
-		answer:
-			"We accept Visa, MasterCard, American Express, PayPal, Apple Pay, and Google Pay, ensuring secure payment options for all customers.",
-	},
-	{
-		icon: ShieldCheck,
-		question: "What if I receive a damaged item?",
-		answer:
-			"Please contact our support team within 48 hours of delivery with photos of the damaged item. We’ll arrange a replacement or refund.",
-	},
-	{
-		icon: UserRoundCheck,
-		question: "How can I contact customer support?",
-		answer:
-			"Reach out via email at support@example.com or call us at 1-800-123-4567 for assistance with any inquiries.",
-	},
-];
-
 export const steps = [
 	{
 		id: 1,
@@ -332,5 +302,87 @@ export const workflowSteps = [
 		icon: Trophy,
 		color: "text-red-500",
 		bgColor: "bg-red-500/10",
+	},
+];
+
+export const faqs = [
+	{
+		icon: Flag,
+		question: "How will the tournament format work?",
+		answer:
+			"The tournament begins with group stage matches, where teams earn points. Top teams qualify for the knockout rounds, progressing until the grand final.",
+	},
+	{
+		icon: Users,
+		question: "How many players can be registered in a team?",
+		answer:
+			"Each university team may register 10 players in total, consisting of 6 active players on the field and 4 substitutes only.",
+	},
+	{
+		icon: Gavel,
+		question: "Who will referee the matches?",
+		answer:
+			"All matches will be managed by officially licensed referees to ensure transparency, fairness, and full compliance with international futsal rules.",
+	},
+	{
+		icon: ShieldCheck,
+		question: "What happens if a match ends in a draw?",
+		answer:
+			"In the group stage, matches may end as draws. During knockout matches, tied games proceed directly to a penalty shootout for results.",
+	},
+	{
+		icon: Gift,
+		question: "Are there awards beyond Champion and Runner-up?",
+		answer:
+			"Yes, awards include Best Player, Best Goalkeeper, Top Scorer, and Fair Play Team, recognizing individuals and teams for outstanding performances.",
+	},
+	{
+		icon: Camera,
+		question: "Will the tournament have media coverage?",
+		answer:
+			"Yes, all matches feature professional photography, highlight reels, and selective live streaming, ensuring strong digital exposure for teams and players.",
+	},
+];
+
+export const contacts = [
+	{
+		icon: MailIcon,
+		title: "Email",
+		description: "Our friendly team is here to help.",
+		link: {
+			href: "mailto:awakenationbd@gmail.com",
+			label: "awakenationbd@gmail.com",
+			target: undefined,
+		},
+	},
+	{
+		icon: MessageCircle,
+		title: "Live chat",
+		description: "Our friendly team is here to help.",
+		link: {
+			href: "https://wa.me/+8801772432706",
+			label: "Start new chat",
+			target: "_blank",
+		},
+	},
+	{
+		icon: MapPinIcon,
+		title: "Office",
+		description: "Come say hello at our office HQ.",
+		link: {
+			href: "https://map.google.com",
+			label: "23 Diluroad, Dhaka, Bangladesh",
+			target: "_blank",
+		},
+	},
+	{
+		icon: PhoneIcon,
+		title: "Phone",
+		description: "Mon-Fri from 8am to 5pm.",
+		link: {
+			href: "tel:+8801772432706",
+			label: "+880 1772-432706",
+			target: undefined,
+		},
 	},
 ];

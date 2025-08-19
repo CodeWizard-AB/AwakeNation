@@ -665,7 +665,7 @@ export default function Registration() {
 																					Account:
 																				</span>
 																				<span className="text-foreground font-semibold">
-																					01869322827
+																					+880 1772-432706
 																				</span>
 																			</div>
 																		</div>
