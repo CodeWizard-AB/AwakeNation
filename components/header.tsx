@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
 	Sheet,
+	SheetClose,
 	SheetContent,
 	SheetHeader,
 	SheetTitle,
@@ -67,7 +68,9 @@ export default function Header() {
 									key={link.href}
 									className="hover:text-primary transition-all duration-300 tranistion-ease-in-out"
 								>
-									<Link href={link.href}>{link.name}</Link>
+									<SheetClose asChild>
+										<Link href={link.href}>{link.name}</Link>
+									</SheetClose>
 								</li>
 							))}
 						</ul>

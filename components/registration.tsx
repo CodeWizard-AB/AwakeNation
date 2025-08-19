@@ -646,17 +646,17 @@ export default function Registration() {
 																<CardContent className="p-6">
 																	<div className="flex items-center mb-4">
 																		<CreditCard className="h-6 w-6 text-blue-500 mr-3" />
-																		<h4 className="font-semibold text-xl text-foreground">
+																		<h4 className="font-semibold text-lg md:text-xl text-foreground">
 																			Payment Instructions
 																		</h4>
 																	</div>
-																	<div className="grid grid-cols-2 gap-4">
+																	<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 																		<div className="space-y-3">
 																			<div className="flex items-center justify-between p-3 bg-card rounded-lg border">
 																				<span className="text-muted-foreground">
 																					Method:
 																				</span>
-																				<span className="text-foreground font-semibold">
+																				<span className="text-foreground font-semibold text-sm md:text-base">
 																					Bkash Send Money
 																				</span>
 																			</div>
@@ -664,8 +664,8 @@ export default function Registration() {
 																				<span className="text-muted-foreground">
 																					Account:
 																				</span>
-																				<span className="text-foreground font-semibold">
-																					+880 1772-432706
+																				<span className="text-foreground font-semibold text-sm md:text-base">
+																					01772432706
 																				</span>
 																			</div>
 																		</div>
@@ -674,7 +674,7 @@ export default function Registration() {
 																				<span className="text-muted-foreground">
 																					Amount:
 																				</span>
-																				<span className="text-green-500 font-bold text-lg">
+																				<span className="text-green-500 font-bold text-sm md:text-base">
 																					6,999 BDT
 																				</span>
 																			</div>
@@ -682,7 +682,7 @@ export default function Registration() {
 																				<span className="text-muted-foreground">
 																					Reference:
 																				</span>
-																				<span className="text-foreground font-semibold text-sm">
+																				<span className="text-foreground font-semibold text-sm md:text-base">
 																					{getValues("teamName")}
 																				</span>
 																			</div>
@@ -691,7 +691,7 @@ export default function Registration() {
 																</CardContent>
 															</Card>
 
-															<div className="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+															<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 																<FormField
 																	control={control}
 																	name="paymentReceipt"
@@ -820,7 +820,7 @@ export default function Registration() {
 																			Team Information
 																		</CardTitle>
 																	</CardHeader>
-																	<CardContent className="space-y-3">
+																	<CardContent className="space-y-3 *:flex-wrap">
 																		<div className="flex justify-between">
 																			<span className="text-muted-foreground">
 																				Team Name:
@@ -911,7 +911,7 @@ export default function Registration() {
 																				(member, index) => (
 																					<div
 																						key={index}
-																						className="flex items-center justify-between text-sm"
+																						className="flex items-center flex-wrap justify-between text-sm"
 																					>
 																						<span className="text-muted-foreground">
 																							{index + 1}.{" "}
@@ -969,14 +969,20 @@ export default function Registration() {
 													{currentStep === 4 && (
 														<Button
 															type="submit"
-															className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-2"
+															disabled={isSubmitting}
+															className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white"
 														>
-															{isSubmitting
-																? (
-																		<Loader2 className="h-4 w-4 mr-2 animate-spin" />
-																  ) + "Submitting..."
-																: "Complete Registration" +
-																  <CheckCircle className="h-4 w-4 ml-2" />}
+															{isSubmitting ? (
+																<>
+																	<Loader2 className="h-4 w-4 mr-2 animate-spin" />
+																	Submitting...
+																</>
+															) : (
+																<>
+																	Complete Registration
+																	<CheckCircle className="h-4 w-4 ml-2" />
+																</>
+															)}
 														</Button>
 													)}
 												</div>

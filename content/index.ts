@@ -5,12 +5,6 @@ import {
 	MapPin,
 	Trophy,
 	Users,
-	BadgeDollarSign,
-	Route,
-	ShieldCheck,
-	Truck,
-	Undo2,
-	UserRoundCheck,
 	TrendingUp,
 	Zap,
 	Shield,
@@ -27,6 +21,7 @@ import {
 	MailIcon,
 	MapPinIcon,
 	PhoneIcon,
+	ShieldCheck,
 } from "lucide-react";
 
 export const navItems = [

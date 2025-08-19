@@ -1,9 +1,18 @@
 import { createClient } from "@sanity/client";
 
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+const apiVersion = "2023-05-03";
+const token = process.env.SANITY_API_TOKEN;
+
+if (!projectId || !dataset || !token) {
+	throw new Error("Missing Sanity credentials in .env file");
+}
+
 export const client = createClient({
-	token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN,
-	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-	apiVersion: "2023-05-03",
+	projectId,
+	dataset,
+	apiVersion,
 	useCdn: true,
+	token,
 });

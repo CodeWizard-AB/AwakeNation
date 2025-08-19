@@ -37,7 +37,7 @@ export const registrationSchema = z.object({
 		.email("Invalid email address."),
 	players: z
 		.array(playerSchema)
-		.min(8, "A minimum of 8 players is required.")
+		.min(1, "A minimum of 8 players is required.")
 		.max(10, "A maximum of 10 players is allowed."),
 	paymentReceipt: z.instanceof(File, {
 		message: "Payment receipt file is required.",
