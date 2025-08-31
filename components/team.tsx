@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default async function Team() {
 	const teamMembers = await client.fetch(
-		`*[_type == "team"] | order(fullName asc) { fullName, email, role, bio, phone, "imageUrl": photo.asset->url}`
+		`*[_type == "member"] | order(fullName asc) { fullName, email, role, bio, phone, "imageUrl": photo.asset->url}`
 	);
 
 	return (
